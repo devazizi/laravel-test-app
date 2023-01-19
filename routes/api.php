@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::prefix('/users')->namespace('\App\Http\Controllers')->group(function () {
+    Route::get('/', 'UserController@index');
+    Route::get('/{userId}', 'UserController@get');
 });
